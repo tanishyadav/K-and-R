@@ -2,7 +2,7 @@
 
 /*
  * entab: replace blanks by minimum number of tabs and blanks; preferring tabs
- * over spaces.
+ * over spaces except when there is only one blank.
  */
 
 #include <stdio.h>
@@ -65,10 +65,18 @@ void putcn(char c, int n)
 void blank2tab(int i, int n, int ts, int out[])
 {
 	int t;  /* spaces to align to next tab boundary */
+
+	/* if only one space then do nothing */
+	if (n == 1) {
+		out[0] = 0;
+		out[1] = 1;
+		return;
+	}
+
 	t = ts - (i % ts);
 	if (t > n) {
 		out[0] = 0;
-		out[1] = out[1] + n;
+		out[1] = n;
 	} else {
 		out[0] = 1 + (n - t) / ts;
 		out[1] = (n - t) % ts;
