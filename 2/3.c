@@ -32,7 +32,7 @@ int htoi(char s[])
 	i = n = 0;
 	if (s[0] == '0' && (s[1] == 'x' || s[1] == 'X'))
 		i = 2;
-	while (i >= 0) {
+	while (1) {
 		if (s[i] >= '0' && s[i] <= '9')
 			n = n*16 + s[i]-'0';
 		else if (s[i] >= 'a' && s[i] <= 'f')
@@ -40,7 +40,7 @@ int htoi(char s[])
 		else if (s[i] >= 'A' && s[i] <= 'F')
 			n = n*16 + s[i]-'A' + 10;
 		else
-			i = -2;
+			return n;
 		++i;
 	}
 
