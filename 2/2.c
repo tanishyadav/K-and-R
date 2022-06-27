@@ -14,8 +14,11 @@ int main(void)
 	int lim=100;
 	char s[100];
 
-	for (i=0; (i<lim-1) * ((c=getchar()) != '\n') * (c != EOF); ++i)
+	c = getchar();
+	for (i=0; (i<lim-1) * (c != '\n') * (c != EOF); ++i) {
 		s[i] = c;
+		c = getchar();
+	}
 
 	s[i] = '\0';
 	printf("%s", s);
