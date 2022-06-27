@@ -37,10 +37,10 @@ unsigned int setbits(unsigned int x, unsigned int p, unsigned int n, unsigned in
 {
 	unsigned int t1, t2, t3;
 	/* leftmost bits of x which have to to be left unchanged */
-	t1 = x & (~0 << (p+1));
+	t1 = x & (~0U << (p+1));
 	/* rightmost n bits of y placed at the position p */
-	t2 = (y & ~(~0 << n)) << (p-n+1);
+	t2 = (y & ~(~0U << n)) << (p-n+1);
 	/* rightmost bits of x which have to to be left unchanged */
-	t3 = x & ~(~0 << (p-n+1));
+	t3 = x & ~(~0U << (p-n+1));
 	return t1 | t2 | t3;
 }
