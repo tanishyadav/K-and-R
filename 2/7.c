@@ -19,8 +19,8 @@ unsigned int invert(unsigned int x, unsigned int p, unsigned int n)
 {
 	unsigned int t1, t2;
 	/* x with n bits that begin at position p cleared */
-	t1 = x & ((~0 << (p+1)) | ~(~0 << (p-n+1)));
+	t1 = x & ((~0U << (p+1)) | ~(~0U << (p-n+1)));
 	/* inverted n bits of x that begin at position p */
-	t2 = (~(x >> (p-n+1)) & ~(~0 << n)) << (p-n+1);
+	t2 = (~(x >> (p-n+1)) & ~(~0U << n)) << (p-n+1);
 	return t1 | t2;
 }
